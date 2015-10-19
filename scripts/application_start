@@ -1,0 +1,4 @@
+#!/bin/bash
+
+service creatives start
+apachectl start

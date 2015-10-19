@@ -1,0 +1,39 @@
+#!/bin/bash
+
+
+log_begin_msg () {
+    if [ -z "${1:-}" ]; then
+        return 1
+    fi
+    echo -n "$@"
+}
+
+log_end_msg () {
+    if [ -z "${1:-}" ]; then
+        return 1
+    fi
+    echo -n "$@"
+    echo
+}
+
+case "$1" in
+    start)
+        log_begin_msg "Starting $DESC"
+        su ubuntu -c "cd /var/www/node && forever start server.js"
+        log_end_msg $?
+        ;;
+    stop)
+        log_begin_msg "Stopping $DESC"
+        su ubuntu -c "forever stopall"
+        log_end_msg $?
+        ;;
+    restart)
+        log_begin_msg "Restarting $DESC"
+        su ubuntu -c "forever restartall"
+        log_end_msg $?
+        ;;
+  *)
+        echo "Usage: $0 {start|stop}" >&2
+        exit 1
+        ;;
+esac

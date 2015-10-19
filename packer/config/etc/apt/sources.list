@@ -1,0 +1,10 @@
+### Ubuntu 12.04 / Precise ###
+deb http://apt.kixeye.com/mirrors/archive.ubuntu.com/ubuntu trusty main restricted universe multiverse
+deb http://apt.kixeye.com/mirrors/archive.ubuntu.com/ubuntu trusty-security main restricted universe multiverse
+deb http://apt.kixeye.com/mirrors/archive.ubuntu.com/ubuntu trusty-updates main restricted universe multiverse
+deb http://apt.kixeye.com/mirrors/archive.canonical.com/ubuntu trusty partner
+
+deb-src http://apt.kixeye.com/mirrors/archive.ubuntu.com/ubuntu trusty main restricted universe multiverse
+deb-src http://apt.kixeye.com/mirrors/archive.ubuntu.com/ubuntu trusty-security main restricted universe multiverse
+deb-src http://apt.kixeye.com/mirrors/archive.ubuntu.com/ubuntu trusty-updates main restricted universe multiverse
+deb-src http://apt.kixeye.com/mirrors/archive.canonical.com/ubuntu trusty partner

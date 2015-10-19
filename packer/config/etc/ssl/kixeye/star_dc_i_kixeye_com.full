@@ -1,0 +1,145 @@
+-----BEGIN PRIVATE KEY-----
+MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDXIzl3DIyKnpHT
+A17rbmzvNfbmjQiUSRiTUmglaaf1AhMa3yKVJ67OTpXNzgDmzbztN29WRqsM3WMT
+EuRX/VdBi6vZ2Z7CPBTjPn1N7d4HRgpl5APeaNcxr+JjdsMfOh50cNNTeqdYI6Xr
+bsjQKnUYHZSr7/+475FviPoH7slLst/mfaf9oC5iuD00cDd/ScLY+KgTIg6HZotV
+dD3bsQ7gv/G08PYszsLJjoNyM/x5fd8eSPE7Fe/GXhOLei34/l9YYwUwzvM3zF62
+K2kLT5C8zGe8dXDhQPtJDNg2MNa899zxoUwe7Rrz9sc7HeRsJC4QVIW3rcJR4PiS
+LaOZngfpAgMBAAECggEAKoLFWibappGK0x15ZiAd2m7ZaNk5dsOy3XmNJsdn7twI
+Fmk9FigPPKj+pPot522EBYPMtkmkhxg/+YbkJBblZQhKXvPHkS36GqVAcWOtWdaX
+O2cA9LPWwfS1UV4oVEVRu0SIHZjA9IOmx4zOlYOuO6OsuwTjjRGZtWZlsaeXkyNa
+p4TP2vX75xN2F49Uucv0Be8/UoU4NFI0JBwV1f9KndU7+knlUBrYBba2ytWs0jG8
+fdHeLljKFnBx4d5yMn8jriaPeBb+qxvBzp1pROR7Y4QLgMH2Di10M2ha1KIW6Ftp
+VIn2zlEQSvO+CO66si9bMXRyIyd70JtKXpraWez3AQKBgQDrqon2tpeCCX0gmOsG
+SjKcOokqUKrl43aUi/wx8y/cX1LYB7VLWEox9WeDogjfkvwLEfRV1+TXmJghS3X2
+DOpaR7XoU5My7I56GnokDvKic2YYLwDzt2MMiwp6Vkp/GzumNm7jR6/XzBetyBwv
+EquDAw3M4UfkoSLKpb1Cl93JMQKBgQDpsz6gepfHaQTD6BMfjT5qEhg/nNDaaAf+
+QNNgmBq0wbc8Pb388qRFijRGCgp2X9+swepVFkYUcCUQr+YXFo2/7fVQcltJU3T9
+MVCQpyqYVYJSdmBPI9328uX5gs/vIKRCwFnC8Hdeg8snRhPxMKECBDrAHsHtgNeV
+CY2oHjD8OQKBgFmFQ7krLSxhbF24mPafss/z0Gz5jaGcIUxWTKuwxEqDD1Yuv2hq
+lmyZ2wN+xr4e+I0/+b+uLijTt15Wau3XhCJdQTWKoczjXU/2xNTztKmPCoY/PK5X
+yFFYc9d69fuIncUKwl6luZ9Q0OHbtREQl4RB4bklDolDyJKQGO+1/rLRAoGBAJ7V
+YlUzvQCc0c5MZuLk3my9C5oAfLpURkp5yLA38L61glIBLKVETH2u5sRLgrzdgGos
+CZX24350kdx7kIhUnda6ZiZc8sotXK/Q2o7V7s9GHqLpLZ/cIrn6cG9ahvRhXQK5
+NMiXIqosLODuchNVF7kFIuD8hpVjIiJ7Mbn3exeRAoGBAJbkWP+e/QBusHPA/VLg
+cIBOcYCjy49rtKWxG8L9Ca/Mu7kDDVIcR1LzxRu2sOr6vjNYchMjtFXsiZpF7MrD
+YYUvOeDKfx+xeylvaPAvjZOBsduocIi7jMSLz3D+Z/Ff4Ss6AzEW7P0aIxLsuftn
+IkAEfK8e3hWMsICqcOnA+0rb
+-----END PRIVATE KEY-----
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 2 (0x2)
+    Signature Algorithm: sha1WithRSAEncryption
+        Issuer: C=US, ST=California, L=San Francisco, O=Casual Collective Inc. dba Kixeye, CN=Kixeye Root CA/emailAddress=sysadmin@kixeye.com
+        Validity
+            Not Before: Jan 18 22:12:17 2013 GMT
+            Not After : Jan 16 22:12:17 2023 GMT
+        Subject: C=US, ST=California, O=Casual Collective Inc. dba Kixeye, CN=*.dc.i.kixeye.com
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:d7:23:39:77:0c:8c:8a:9e:91:d3:03:5e:eb:6e:
+                    6c:ef:35:f6:e6:8d:08:94:49:18:93:52:68:25:69:
+                    a7:f5:02:13:1a:df:22:95:27:ae:ce:4e:95:cd:ce:
+                    00:e6:cd:bc:ed:37:6f:56:46:ab:0c:dd:63:13:12:
+                    e4:57:fd:57:41:8b:ab:d9:d9:9e:c2:3c:14:e3:3e:
+                    7d:4d:ed:de:07:46:0a:65:e4:03:de:68:d7:31:af:
+                    e2:63:76:c3:1f:3a:1e:74:70:d3:53:7a:a7:58:23:
+                    a5:eb:6e:c8:d0:2a:75:18:1d:94:ab:ef:ff:b8:ef:
+                    91:6f:88:fa:07:ee:c9:4b:b2:df:e6:7d:a7:fd:a0:
+                    2e:62:b8:3d:34:70:37:7f:49:c2:d8:f8:a8:13:22:
+                    0e:87:66:8b:55:74:3d:db:b1:0e:e0:bf:f1:b4:f0:
+                    f6:2c:ce:c2:c9:8e:83:72:33:fc:79:7d:df:1e:48:
+                    f1:3b:15:ef:c6:5e:13:8b:7a:2d:f8:fe:5f:58:63:
+                    05:30:ce:f3:37:cc:5e:b6:2b:69:0b:4f:90:bc:cc:
+                    67:bc:75:70:e1:40:fb:49:0c:d8:36:30:d6:bc:f7:
+                    dc:f1:a1:4c:1e:ed:1a:f3:f6:c7:3b:1d:e4:6c:24:
+                    2e:10:54:85:b7:ad:c2:51:e0:f8:92:2d:a3:99:9e:
+                    07:e9
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            X509v3 Subject Key Identifier: 
+                90:3B:2D:D2:B0:AD:20:B9:D3:72:8E:54:70:6F:9E:2C:59:0D:5A:26
+            X509v3 Authority Key Identifier: 
+                keyid:90:8D:C4:24:F4:9C:72:B0:8C:86:9B:85:A5:A5:55:5B:93:09:14:6E
+                DirName:/C=US/ST=California/L=San Francisco/O=Casual Collective Inc. dba Kixeye/CN=Kixeye Root CA/emailAddress=sysadmin@kixeye.com
+                serial:DE:83:5C:63:EA:15:E9:F7
+
+            Netscape CA Revocation Url: 
+                https://kixeye.com/ssl/revoke.pem
+    Signature Algorithm: sha1WithRSAEncryption
+         aa:fb:33:a5:5e:4f:ee:7f:01:bf:1b:db:2f:27:7c:10:57:0d:
+         8a:d2:5b:ba:02:c0:33:cf:58:4c:ec:4b:c0:8b:51:9f:c6:ef:
+         df:3e:dc:e3:d4:1c:2f:1a:54:96:a8:b5:c9:1d:ae:19:01:80:
+         aa:b5:f7:6d:7e:df:49:50:5e:39:1d:60:cb:f4:5e:c9:a2:8c:
+         2c:af:32:52:21:38:35:23:9e:33:97:b2:28:ce:b3:bc:e1:f8:
+         e9:18:74:3c:87:22:e4:6b:5d:3f:00:80:a4:de:b9:f7:28:c5:
+         94:ef:71:f6:c4:35:1e:64:8c:b8:9d:79:9e:6f:91:12:18:e8:
+         a9:06:6d:57:f0:35:0e:97:0c:8b:dd:db:89:80:c2:f7:81:6e:
+         c6:19:ee:9a:5e:33:a0:87:fd:af:45:ab:18:dd:54:50:35:58:
+         40:34:4c:de:5b:d0:48:48:56:00:e6:31:72:e0:51:45:bf:06:
+         c7:40:97:cd:8f:04:d2:a5:bb:2e:e8:49:6a:8f:79:a7:1f:40:
+         f6:e2:3d:d0:47:15:04:85:95:ce:51:38:0d:98:68:28:e2:27:
+         ee:34:77:6a:14:74:ec:05:79:f0:5a:6b:8e:b5:96:59:39:40:
+         2d:94:72:7e:4c:c0:41:b3:2c:f0:f4:49:7a:15:45:f7:31:a6:
+         44:4d:85:f7
+-----BEGIN CERTIFICATE-----
+MIIExjCCA66gAwIBAgIBAjANBgkqhkiG9w0BAQUFADCBozELMAkGA1UEBhMCVVMx
+EzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xKjAo
+BgNVBAoMIUNhc3VhbCBDb2xsZWN0aXZlIEluYy4gZGJhIEtpeGV5ZTEXMBUGA1UE
+AwwOS2l4ZXllIFJvb3QgQ0ExIjAgBgkqhkiG9w0BCQEWE3N5c2FkbWluQGtpeGV5
+ZS5jb20wHhcNMTMwMTE4MjIxMjE3WhcNMjMwMTE2MjIxMjE3WjBqMQswCQYDVQQG
+EwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEqMCgGA1UECgwhQ2FzdWFsIENvbGxl
+Y3RpdmUgSW5jLiBkYmEgS2l4ZXllMRowGAYDVQQDDBEqLmRjLmkua2l4ZXllLmNv
+bTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANcjOXcMjIqekdMDXutu
+bO819uaNCJRJGJNSaCVpp/UCExrfIpUnrs5Olc3OAObNvO03b1ZGqwzdYxMS5Ff9
+V0GLq9nZnsI8FOM+fU3t3gdGCmXkA95o1zGv4mN2wx86HnRw01N6p1gjpetuyNAq
+dRgdlKvv/7jvkW+I+gfuyUuy3+Z9p/2gLmK4PTRwN39Jwtj4qBMiDodmi1V0Pdux
+DuC/8bTw9izOwsmOg3Iz/Hl93x5I8TsV78ZeE4t6Lfj+X1hjBTDO8zfMXrYraQtP
+kLzMZ7x1cOFA+0kM2DYw1rz33PGhTB7tGvP2xzsd5GwkLhBUhbetwlHg+JIto5me
+B+kCAwEAAaOCATswggE3MAkGA1UdEwQCMAAwHQYDVR0OBBYEFJA7LdKwrSC503KO
+VHBvnixZDVomMIHYBgNVHSMEgdAwgc2AFJCNxCT0nHKwjIabhaWlVVuTCRRuoYGp
+pIGmMIGjMQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UE
+BwwNU2FuIEZyYW5jaXNjbzEqMCgGA1UECgwhQ2FzdWFsIENvbGxlY3RpdmUgSW5j
+LiBkYmEgS2l4ZXllMRcwFQYDVQQDDA5LaXhleWUgUm9vdCBDQTEiMCAGCSqGSIb3
+DQEJARYTc3lzYWRtaW5Aa2l4ZXllLmNvbYIJAN6DXGPqFen3MDAGCWCGSAGG+EIB
+BAQjFiFodHRwczovL2tpeGV5ZS5jb20vc3NsL3Jldm9rZS5wZW0wDQYJKoZIhvcN
+AQEFBQADggEBAKr7M6VeT+5/Ab8b2y8nfBBXDYrSW7oCwDPPWEzsS8CLUZ/G798+
+3OPUHC8aVJaotckdrhkBgKq1921+30lQXjkdYMv0XsmijCyvMlIhODUjnjOXsijO
+s7zh+OkYdDyHIuRrXT8AgKTeufcoxZTvcfbENR5kjLideZ5vkRIY6KkGbVfwNQ6X
+DIvd24mAwveBbsYZ7ppeM6CH/a9FqxjdVFA1WEA0TN5b0EhIVgDmMXLgUUW/BsdA
+l82PBNKluy7oSWqPeacfQPbiPdBHFQSFlc5ROA2YaCjiJ+40d2oUdOwFefBaa461
+llk5QC2Ucn5MwEGzLPD0SXoVRfcxpkRNhfc=
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+MIIE2TCCA8GgAwIBAgIJAN6DXGPqFen3MA0GCSqGSIb3DQEBBQUAMIGjMQswCQYD
+VQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5j
+aXNjbzEqMCgGA1UECgwhQ2FzdWFsIENvbGxlY3RpdmUgSW5jLiBkYmEgS2l4ZXll
+MRcwFQYDVQQDDA5LaXhleWUgUm9vdCBDQTEiMCAGCSqGSIb3DQEJARYTc3lzYWRt
+aW5Aa2l4ZXllLmNvbTAeFw0xMzAxMTgyMjAwMTBaFw0xODAxMTcyMjAwMTBaMIGj
+MQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2Fu
+IEZyYW5jaXNjbzEqMCgGA1UECgwhQ2FzdWFsIENvbGxlY3RpdmUgSW5jLiBkYmEg
+S2l4ZXllMRcwFQYDVQQDDA5LaXhleWUgUm9vdCBDQTEiMCAGCSqGSIb3DQEJARYT
+c3lzYWRtaW5Aa2l4ZXllLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoC
+ggEBAL+f1Dz9xLXPn1u7/jNz2wDMYNwjswQ5TqT65BVrZ/QjQq96n+gldyTYjlMR
+wcDptnTix1mMBeQdTDBwuYkHydLxrrtTnAYvNhIDqtPQkXsSYmDKVecCJ4Gin+Y+
+RI8rU6e7/CMNoey66mAF1JxcFiN0dTaPhB0KmroV4lLg7XsY7/K3cjfo8I0ZwTUf
+H9ZKPAVukL9vFpHTe+D4xqWet6oMgFrV3oNtPdufW4WWqY2eUX5RHnWMh9iAtoNC
+8r1vStnwZQJg9/9OvOWOjTOQ5k3ukXwI9FS0Gf8eB+rbFPBCjmAdEASSaopINa9y
+6O0xi2Jnegc9JXl63eFgeuxJ8BcCAwEAAaOCAQwwggEIMB0GA1UdDgQWBBSQjcQk
+9JxysIyGm4WlpVVbkwkUbjCB2AYDVR0jBIHQMIHNgBSQjcQk9JxysIyGm4WlpVVb
+kwkUbqGBqaSBpjCBozELMAkGA1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWEx
+FjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xKjAoBgNVBAoMIUNhc3VhbCBDb2xsZWN0
+aXZlIEluYy4gZGJhIEtpeGV5ZTEXMBUGA1UEAwwOS2l4ZXllIFJvb3QgQ0ExIjAg
+BgkqhkiG9w0BCQEWE3N5c2FkbWluQGtpeGV5ZS5jb22CCQDeg1xj6hXp9zAMBgNV
+HRMEBTADAQH/MA0GCSqGSIb3DQEBBQUAA4IBAQBjM7juZSorugJtDLY2lRmowTva
+yRgRk2P5hmJS3QDaohDWgTI/Bj4SSKkFHjwUY8fd/T0RcvQD4hgpD9b8AlrNkh8t
+kNi+s/nu0E1n2YVd8lYMMan/WgvKgaf3R9ZSFwuTe6WkeVDyCFK0Xp6k9qUo/1qN
+oquxHEhHXdlq0rEqwwduzwOBIhB1PZeazeIP6ZDeHQC36/KJ4q3GFpOd2FWESIz5
+cA9nLhVea0TaBLCBOUHn5YkiQ1YOcOtSAqnMipZf/Ph7NT7vPW4ynPYVi7tvk+m1
++Fd3MJK4kxfVHAtxN9Kv7ORGIFafsK7/uxtBjUN10umYpf2ENXztMCqz0ph5
+-----END CERTIFICATE-----

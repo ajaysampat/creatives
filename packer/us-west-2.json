@@ -1,0 +1,65 @@
+{
+	"variables": {
+		"aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
+		"aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}"
+	},
+	"builders": [{
+		"type": "amazon-ebs",
+		"access_key": "{{user `aws_access_key`}}",
+		"secret_key": "{{user `aws_secret_key`}}",
+		"region": "us-west-2",
+		"source_ami": "ami-a9e2da99",
+		"instance_type": "c3.large",
+		"ssh_username": "ubuntu",
+		"ssh_private_ip": "true",
+
+		"vpc_id": "vpc-2969e14c",
+		"subnet_id": "subnet-c47afbb3",
+		"security_group_ids": ["sg-dd6c8eb9", "sg-29a4494d", "sg-80e50ce4"],
+
+		"associate_public_ip_address": "true",
+
+		"ami_name": "KIXEYE Marketing creatives {{timestamp}}",
+		"tags": { "Name": "marketing_creatives_{{timestamp}}" }
+	}],
+	"provisioners": [{
+		"type": "shell",
+		"inline": ["mkdir /tmp/packer"]
+	},{
+		"type": "file",
+		"source": "config/",
+		"destination": "/tmp/packer/"
+	},{
+                "type": "file",
+                "source": "../css",
+                "destination": "/tmp/packer/var/www/css"
+        },{
+                "type": "file",
+                "source": "../fonts",
+                "destination": "/tmp/packer/var/www/fonts"
+        },{
+                "type": "file",
+                "source": "../images",
+                "destination": "/tmp/packer/var/www/images"
+        },{
+                "type": "file",
+                "source": "../index.html",
+                "destination": "/tmp/packer/var/www/index.html"
+        },{
+                "type": "file",
+                "source": "../js",
+                "destination": "/tmp/packer/var/www/js"
+        },{
+                "type": "file",
+                "source": "../node",
+                "destination": "/tmp/packer/var/www/node"
+        },{
+                "type": "file",
+                "source": "../scripts",
+                "destination": "/tmp/packer/var/www/scripts"
+        },{
+		"type": "shell",
+		"script": "bootstrap.sh"
+	}
+	]
+}

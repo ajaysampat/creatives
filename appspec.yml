@@ -1,0 +1,31 @@
+version: 0.0
+os: linux
+files:
+  - source: css
+    destination: /var/www/css
+  - source: fonts
+    destination: /var/www/fonts
+  - source: images
+    destination: /var/www/images
+  - source: index.html
+    destination: /var/www
+  - source: js
+    destination: /var/www/js
+  - source: node
+    destination: /var/www/node
+hooks:
+  ApplicationStop:
+  - location: scripts/application_stop
+    runas: root
+  BeforeInstall:
+  - location: scripts/before_install
+    runas: root
+  AfterInstall:
+  - location: scripts/after_install
+    runas: root
+  ApplicationStart:
+  - location: scripts/application_start
+    runas: root
+  ValidateService:
+  - location: scripts/validate_service
+    runas: root

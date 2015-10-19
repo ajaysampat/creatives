@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html data-ng-app="gDriveApp" ng-csp="">
+	<head> 
+		<meta charset="utf-8" />
+		<meta name="google-signin-clientid" content="894390426468-fijr71g5jbhad0an4rg9ptm2nidru6lg.apps.googleusercontent.com" />
+		<meta name="google-signin-scope" content="https://www.googleapis.com/auth/drive" />
+		<meta name="google-signin-cookiepolicy" content="none" />
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-switch.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/styles.css" />
+		<link rel="stylesheet" type="text/css" href="css/dataTables.bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-multiselect.css" type="text/css"/>
+		<link rel="stylesheet" href="css/datepicker.css" type="text/css" />
+		<link rel="shortcut icon" href="https://www.kixeye.com/favicon.ico">
+		<title>KIXEYE Creative Repo</title>
+	</head>
+	<body drop-target data-ng-controller="DocsController">
+<!--UPLOAD FILE MODAL-->
+		<div class="overlay"><div>Upload File</div></div>
+		<div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="myModalLabel">Upload File</h4>
+		      </div>
+		      <div class="modal-body">
+				<div class="panel panel-default" ng-hide="uploading">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								<a>
+									<span class="glyphicon glyphicon-info-sign"></span> File Info
+								</a>
+							</h3>
+						</div>
+						<div id="uploadInfo">
+							<div class="panel-body" style="background: #f5f5f5;">
+								<div class="upload-form">
+							      	<label for="selectGame">Game</label>
+							        <div class="btn-group uploadGameButtons" id="selectGame">
+										<button type="button" class="btn btn-default" ng-click="gameSelectButton('BP')"><div class="game-label label-bp">BP</div></button>
+										<button type="button" class="btn btn-default" ng-click="gameSelectButton('WC')"><div class="game-label label-wc">WC</div></button>
+										<button type="button" class="btn btn-default" ng-click="gameSelectButton('VC')"><div class="game-label label-vc">VC</div></button>
+										<button type="button" class="btn btn-default" ng-click="gameSelectButton('RA')"><div class="game-label label-ra">WCM</div></button>
+										<button type="button" class="btn btn-default" ng-click="gameSelectButton('SF')"><div class="game-label label-sf">SF</div></button>
+										<button type="button" class="btn btn-default" ng-click="gameSelectButton('KM')"><div class="game-label label-km">KM</div></button>
+									</div>
+									<div class="form-inline" style="margin-top: 5px;">
+									  <div class="form-group">
+									    <label for="exampleInputName2">Project</label>
+									    <input type="text" class="form-control" id="selectProject" ng-model="project" typeahead="project for project in projectList | filter:$viewValue | limitTo:8">
+									  </div>
+									</div>
+								</div>
+							</div>
+						</div>
+				</div>
+				<div class="panel panel-default" ng-hide="uploading">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								<a data-toggle="collapse" href="#uploadShareSettings">
+									<span class="glyphicon glyphicon-user"></span> Share Settings
+								</a>
+							</h3>
+						</div>
+						<div id="uploadShareSettings" class="panel-collapse collapse">
+							<div class="panel-body" style="background: #f5f5f5;">
+							<table class="table table-striped">
+								<tbody>
+								<tr>
+									<td><B>Product Marketing</B></td>
+									<td class="center">
+										<input type="checkbox" name="pm-share-upload">
+				  					</td>
+								</tr>
+								<tr>
+									<td><B>Marketing Product Teams</B></td>
+									<td class="center">
+										<div class="btn-group">
+										  <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+										    Select <span class="caret"></span>
+										  </button>
+										  <ul class="dropdown-menu" role="menu">							
+										    <li ng-repeat="(name,value) in uploadDoc.uploadTeamPermissions"><a ng-click="addUploadTeam(name,value)">{{name}} <span class="glyphicon glyphicon-ok-sign" aria-hidden="true" ng-show="value"></span></a></li>
+										  </ul>
+										</div>
+				  					</td>
+								</tr>
+								<tr>
+									<td><b>User Acquisition</b></td>
+									<td class="center">
+										<input type="checkbox" name="ua-share-upload">
+				  					</td>
+								</tr>
+								<tr>
+									<td><b>Marketing Engineering</b></td>
+									<td class="center">
+										<input type="checkbox" name="me-share-upload">
+				  					</td>
+								</tr>
+								<tr ng-repeat="user in uploadDoc.users">
+									<td>{{user.emailAddress}}</td>
+									<td class="center">
+										<button type="button" class="btn btn-xs btn-danger" ng-click="removeUploadPermission($index)">
+											<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+				  						</button>
+				  					</td>
+								</tr>
+								</tbody>
+							</table>
+							<div class="panel panel-default panel-info">
+								<div class="panel-heading">
+									<h3 class="panel-title">Add Users</h3>
+								</div>
+								<div class="panel-body">
+										<form class="form-inline">
+								 			<input type="text" class="form-control" id="shareEmailUpload" placeholder="Email Address" style="width: 410px;" ng-model="shareWithUpload" typeahead="contact for contact in contactList | filter:$viewValue | limitTo:8">
+								  			<button type="submit" class="btn btn-primary" ng-click="shareFileUpload()">Share File</button>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				<div class="upload-indicator" ng-show="uploading">
+					<h5>Uploading, please wait...</h5>
+					<div class="progress"><div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div></div>
+				</div>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default cancelBtn" data-dismiss="modal" ng-click="cancelButton()">Cancel</button>
+		        <button type="button" class="btn btn-primary disabled uploadBtn" ng-click="uploadButton()">Upload</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+<!--DELETE FILE MODAL-->
+		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="myModalLabel">Delete File</h4>
+		      </div>
+		      <div class="modal-body">
+		        Are you sure you want to remove the file <b>{{selectedDoc.title}}</b>?<br><br>
+		        <b>Unlink</b> will leave the file in your Google Drive.<br>
+		        <b>Delete</b> will remove the file from both creatives.kixeye.com, and from Google Drive.
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+		        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="unlinkFile(selectedDoc)">Unlink</button>
+		        <button type="button" class="btn btn-danger deleteBtn" data-dismiss="modal" ng-click="deleteFile(selectedDoc)">Delete</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+<!--DELETE SHARED FILE MODAL-->
+		<div class="modal fade" id="deleteModalShared" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="myModalLabel">Delete File</h4>
+		      </div>
+		      <div class="modal-body">
+		        Are you sure you want to delete the file <b>{{selectedDoc.title}}</b>? The file will remain available for other collaborators.
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+		        <button type="button" class="btn btn-danger deleteBtn" data-dismiss="modal" ng-click="unlinkFile(selectedDoc)">Delete</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+<!--SINGULAR LINK MODAL-->
+		<div class="modal fade" id="linkModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Link to Singular Campaign</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal">
+					  <div class="form-group">
+					    <label for="campaignid" class="col-sm-5 control-label">Campaign ID (blank to unlink):</label>
+					    <div class="col-sm-7">
+					      <input type="email" class="form-control" id="campaignid">
+					    </div>
+					  </div>
+					</form>
+				</div>
+				<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+				</div>
+		    </div>
+		  </div>
+		</div>
+<!--FILE INFO MODAL-->
+		<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="myModalLabel">{{selectedDoc.title}}</h4>
+		      </div>
+		      <div class="modal-body">
+		        <table class="table table-striped">
+					<tbody>
+					<tr ng-repeat="owner in selectedDoc.owners">
+						<td>{{$first && $last && "Owner" || $first && "Owners" || ""}}</td>
+						<td>{{owner.displayName}}</td>
+					</tr>
+					<tr>
+						<td>File Size</td>
+						<td>{{selectedDoc.fileSize | bytes}}</td>
+					</tr>
+					<tr>
+						<td>File Dimensions</td>
+						<td>{{selectedDoc.metaData.width}}x{{selectedDoc.metaData.height}}</td>
+					</tr>
+					<tr>
+						<td>Created On</td>
+						<td>{{selectedDoc.createdDate | date:'short'}}</td>
+					</tr>
+					<tr>
+						<td>Last Modified</td>
+						<td>{{selectedDoc.modifiedDate | date:'short'}}</td>
+					</tr>
+					<!--<tr>
+						<td>Custom Tags</td>
+						<td>
+							<span class="label label-default">snowfall</span>
+							<span class="label label-default">facebook</span>
+							<span class="label label-default">tag3</span>
+							<button type="button" class="btn btn-xs addTagBtn"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+						</td>
+					</tr>-->
+					</tbody>
+				</table>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+<!--FILE SHARE MODAL-->
+		<div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="myModalLabel">Share <i>{{selectedDoc.title}}</i></h4>
+		      </div>
+		      <div class="modal-body">
+		        <table class="table table-striped">
+					<tbody>
+					<tr ng-repeat="owner in selectedDoc.owners">
+						<td>{{owner.displayName}} <i>({{owner.emailAddress}})</i></td>
+						<td class="center">
+							<span class="label label-success">Owner</span>
+						</td>
+					</tr>
+					<tr>
+						<td><B>Product Marketing</B></td>
+						<td class="center">
+							<input type="checkbox" name="pm-share" ng-checked="selectedDoc.pmPermission">
+	  					</td>
+					</tr>
+					<tr>
+						<td><B>Marketing Product Teams</B></td>
+						<td class="center">
+							<div class="btn-group">
+							  <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+							    Select <span class="caret"></span>
+							  </button>
+							  <ul class="dropdown-menu" role="menu">							
+							    <li ng-repeat="(name,team) in selectedDoc.teamPermissions"><a ng-click="addTeam(name,team)">{{name}} <span class="glyphicon glyphicon-ok-sign" aria-hidden="true" ng-show="team"></span></a></li>
+							  </ul>
+							</div>
+	  					</td>
+					</tr>
+					<tr>
+						<td><b>User Acquisition</b></td>
+						<td class="center">
+							<input type="checkbox" name="ua-share" ng-checked="selectedDoc.uaPermission">
+	  					</td>
+					</tr>
+					<tr>
+						<td><b>Marketing Engineering</b></td>
+						<td class="center">
+							<input type="checkbox" name="me-share" ng-checked="selectedDoc.mePermission">
+	  					</td>
+					</tr>
+					<tr ng-repeat="user in selectedDoc.permissions">
+						<td>{{user.name}} <i>({{user.emailAddress}})</i></td>
+						<td class="center">
+							<button type="button" class="btn btn-xs btn-danger" ng-click="removePermission(user, $index)">
+								<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+	  						</button>
+	  					</td>
+					</tr>
+					</tbody>
+				</table>
+				<div class="panel panel-default panel-info">
+					<div class="panel-heading">
+						<h3 class="panel-title">Add Users</h3>
+					</div>
+					<div class="panel-body">
+						<form class="form-inline">
+				 			<input type="text" class="form-control" id="shareEmail" placeholder="Email Address" style="width: 440px;" ng-model="shareWith" typeahead="contact for contact in contactList | filter:$viewValue | limitTo:8">
+				  			<button type="submit" class="btn btn-primary" ng-click="shareFile(shareWith)">Share File</button>
+						</form>
+					</div>
+				</div>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+<!--MAIN BODY-->
+	<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+			<div class="navbar-brand" id="navbar-brand" href="#"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Creative Repo</div>
+			<ul class="nav navbar-text navbar-right">
+				{{user[0]}}
+				<li><button id="authorize-button" class="btn btn-primary btn-xs" data-ng-click="toggleAuth(true)">{{authButtonLabel()}}</button> </li>
+				<li class="emailButton"><a href="mailto:me@kixeye.com" title="Email Us"><span class="glyphicon glyphicon-envelope"></span></a></li>
+			</ul>
+	</nav>
+	<div class="container" data-ng-show="invalidUser">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="alert alert-danger" role="alert">
+					You do not have permission to access the Creative Repo. Please email <a href="mailto:me@kixeye.com">me@kixeye.com</a> if you think you have recieved this message in error.
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid" data-ng-show="validUser">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="alert alert-info alert-dismissable alert-tutorial" role="alert">
+				 	<button type="button" class="close" data-dismiss="alert" aria-label="Close" ng-click="alertClose()"><span aria-hidden="true">&times;</span></button>
+				 	<div class="tut_icons_box">
+						<div class="tut_box">
+							<div class="tut_icon"><span class="glyphicon glyphicon-upload"></span></div>
+							<div class="tut_text">Upload</div>
+						</div>
+						<div class="tut_box">
+							<div class="tut_icon"><span class="glyphicon glyphicon-user"></span></div>
+							<div class="tut_text">Share</div>
+						</div>
+						<div class="tut_box">
+							<div class="tut_icon"><span class="glyphicon glyphicon-equalizer"></span></div>
+							<div class="tut_text">Analyze</div>
+						</div>
+					</div>
+					<div class="tut_header_box">
+						<div class="tut_header">Welcome to the Creative Repo.</div>
+						<div class="tut_subheader"><b>Tip: </b>Drag a file anywhere on this page to upload.</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel-group" id="mainPanels">
+					<div class="panel panel-default" data-ng-show="kixeyeUser">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								<a data-toggle="collapse" href="#myAnalytics">
+									<span class="glyphicon glyphicon-equalizer"></span> Analytics
+								</a>
+								<div class="pull-right">
+									{{fromDate | date:'MM/dd/yy'}} - {{toDate | date:'MM/dd/yy'}}
+								</div>
+							</h3>
+						</div>
+						<div id="myAnalytics" class="panel-collapse">
+							<div class="panel-body">
+							<div role="tabpanel">
+							  <!-- Nav tabs -->
+							  <ul class="nav nav-tabs" role="tablist">
+							  	<li role="presentation" class="active"><a href="#vc-android-tab" aria-controls="vc-android-tab" role="tab" data-toggle="tab">VC Android</a></li>
+							    <li role="presentation"><a href="#wcra-tab" aria-controls="wcra-tab" role="tab" data-toggle="tab">WC:RA</a></li>
+							    <li role="presentation"><a href="#vc-ios-tab" aria-controls="vc-ios-tab" role="tab" data-toggle="tab">VC iOS</a></li>
+							  </ul>
+
+							  <!-- Tab panes -->
+							  <div class="tab-content">
+							    <div role="tabpanel" class="tab-pane active" id="vc-android-tab"></div>
+							    <div role="tabpanel" class="tab-pane" id="wcra-tab"></div>
+							    <div role="tabpanel" class="tab-pane" id="vc-ios-tab"></div>
+							  </div>
+							  <a href="#" class="export">Export to CSV</a>
+							</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div id="filterRow">
+								<form id="myDateRange" class="form-inline daterange" ng-submit="fetchDocs()">
+									<div class="form-group">
+							          <label class="control-label" for="start_date">Start Date</label>
+							          <div class="input-group" data-date-format="yyyy-mm-dd" style="width: 180px;">
+							            <input type="text" class="form-control input-sm date start_date" name="start_date" value="">
+							            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+							          </div>
+							        </div>
+							        <div class="form-group">
+							          <label class="control-label" for="end_date">End Date</label>
+							          <div class="input-group" data-date-format="yyyy-mm-dd" style="width: 180px;">
+							            <input type="text" class="form-control input-sm date end_date" name="end_date" value="">
+							            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+							          </div>
+							        </div>
+							        <button type="submit" class="btn btn-default">Go</button>
+						    	</form>
+						    	<h4>OR</h4>
+						    	<form id="fileSearch" class="form-inline" ng-submit="fetchDocs()">
+							    	<input type="text" class="form-control input-sm" placeholder="Search all files">
+							    	<button type="submit" class="btn btn-default">Go</button>
+						    	</form>
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								<a data-toggle="collapse" href="#myUploads">
+									<span class="glyphicon glyphicon-upload"></span> My Uploads <span ng-hide="filesLoaded"><img src="images/spinner.gif" align="top"></span>
+								</a>
+								<div class="myFilesNavbar pull-right">
+									<div class="btn-group hidden" id="myFilesFilters">
+										<button type="button" class="btn btn-sm" filter-icon><div class="game-label label-bp">BP</div></button>
+										<button type="button" class="btn btn-sm" filter-icon><div class="game-label label-wc">WC</div></button>
+										<button type="button" class="btn btn-sm" filter-icon><div class="game-label label-vc">VC</div></button>
+										<button type="button" class="btn btn-sm" filter-icon><div class="game-label label-ra">WCM</div></button>
+										<button type="button" class="btn btn-sm" filter-icon><div class="game-label label-sf">SF</div></button>
+										<button type="button" class="btn btn-sm" filter-icon><div class="game-label label-km">KM</div></button>
+									</div> 
+									<div class="hidden" id="myFilesSearch">
+										 <input type="text" class="form-control input-sm" search-box placeholder="Search">
+									</div>
+									<button type="button" class="btn btn-sm btn-default tt" tooltip="Filter by Game" id="myFilesFiltersToggle" ng-click="filterButton('#myFilesFilters')"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span></button>
+									<div  data-ng-show="myProjects.length" style="display: inline-block;">
+									<select id="my-project-select" multiple="multiple">
+									 	<option ng-repeat="project in myProjects" value="{{project}}">{{project}}</option>
+									</select>
+									</div>
+									<div class="btn-group">
+									<button type="button" class="btn btn-sm btn-default tt dropdown-toggle" tooltip="Number of Rows" id="myNumRowsToggle" data-toggle="dropdown">
+										<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+									</button>
+									<ul class="dropdown-menu pull-right" role="menu">
+										<li><a onclick="$('#myFilesTable').DataTable().page.len(10).draw();">10 Rows</a></li>
+										<li><a onclick="$('#myFilesTable').DataTable().page.len(20).draw();">20 Rows</a></li>
+										<li><a onclick="$('#myFilesTable').DataTable().page.len(50).draw();">50 Rows</a></li>
+										<li><a onclick="$('#myFilesTable').DataTable().page.len(100).draw();">100 Rows</a></li>
+									</ul>
+									</div>
+									<button type="button" class="btn btn-sm btn-primary tt" tooltip="Upload Files" id="uploadFilesButton" onclick="document.getElementById('my_file').click()"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> Upload</button>
+									<input type="file" id="my_file">
+								</div>
+							</h3>
+						</div>
+						<div id="myUploads" class="panel-collapse collapse in">
+							<div class="panel-body">
+								<div class="table-responsive">
+								<table id="myFilesTable" datatable="ng"  dt-options="dtOptions" dt-column-defs="dtColumnDefs" class="display" cellspacing="0" width="100%">
+									<thead>
+										<tr>
+											<th class="previewImgHeader"></th>
+											<th>Filename</th>
+											<th>Game</th>
+											<th>Project</th>
+											<th>Created</th>
+											<th>Modified</th>
+											<th>People</th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr data-ng-repeat="doc in docs">
+											<td class="previewImg"><div><img ng-src="{{::doc.thumbnailLink}}" draggable="false"><span><img ng-src="{{::doc.thumbnailLink}}" draggable="false"></span></div></td>
+											<td>{{::doc.title}}</td>
+											<td><div class="game-label label-{{doc.game | lowercase}}">{{doc.game}}</div></td>
+											<td>{{::doc.project}}</td>
+											<td>{{::doc.createdDate | date:'M/d' }} {{::doc.createdDate | date:'H:mm' }}</td>
+											<td>{{::doc.modifiedDate | date:'M/d' }} {{::doc.modifiedDate | date:'H:mm' }}</td>
+											<td>
+												<div class="shareList">
+													<div class="table-label">{{::doc.owners[0].emailAddress}} <span class="label label-default" ng-show="doc.sharedUsersCount" tooltip-html-unsafe="{{::doc.sharedUsersHtml}}" tooltip-placement="right">+{{::doc.sharedUsersCount}}</span></div>
+												</div>
+											</td>
+											<td><!--actions-->
+												<div class="btn-group" role="group">
+												<button type="button" class="btn btn-xs btn-default tt infoBtn" tooltip="File Info" ng-click="infoButton(doc)">
+													<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+												</button>
+												<a ng-href="{{doc.webContentLink}}" type="button" class="btn btn-xs btn-default tt infoBtn" tooltip="Download File">
+													<span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+												</a>
+												<button type="button" class="btn btn-xs btn-default shareBtn tt" tooltip="Share" ng-click="shareButton(doc)">
+													<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+												</button>
+												<button type="button" class="btn btn-xs btn-danger tt" tooltip="Delete Image" ng-click="deleteButton(doc)">
+													<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+												</button>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								<a data-toggle="collapse" href="#sharedWithMe">
+									<span class="glyphicon glyphicon-user"></span> Shared With Me 
+								</a><span ng-hide="filesLoaded"><img src="images/spinner.gif" align="top"></span>
+								<div class="sharedWithMeNavbar pull-right">
+									<div class="btn-group hidden" id="sharedWithMeFilters">
+										<button type="button" class="btn btn-sm" filter-icon><div class="game-label label-bp">BP</div></button>
+										<button type="button" class="btn btn-sm" filter-icon><div class="game-label label-wc">WC</div></button>
+										<button type="button" class="btn btn-sm" filter-icon><div class="game-label label-vc">VC</div></button>
+										<button type="button" class="btn btn-sm" filter-icon><div class="game-label label-ra">WCM</div></button>
+										<button type="button" class="btn btn-sm" filter-icon><div class="game-label label-sf">SF</div></button>
+										<button type="button" class="btn btn-sm" filter-icon><div class="game-label label-km">KM</div></button>
+									</div> 
+									<button type="button" class="btn btn-sm btn-default tt" tooltip="Filter by Game" id="sharedWithMeFiltersToggle" ng-click="filterButton('#sharedWithMeFilters')"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span></button>
+									<div  data-ng-show="sharedProjects.length" style="display: inline-block;">
+									<select id="shared-project-select" multiple="multiple">
+									 	<option ng-repeat="project in sharedProjects" value="{{project}}">{{project}}</option>
+									</select>
+									<div class="btn-group">
+									<button type="button" class="btn btn-sm btn-default tt dropdown-toggle" tooltip="Number of Rows" id="myNumRowsToggle" data-toggle="dropdown">
+										<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+									</button>
+									<ul class="dropdown-menu pull-right" role="menu">
+										<li><a onclick="$('#sharedWithMeTable').DataTable().page.len(10).draw();">10 Rows</a></li>
+										<li><a onclick="$('#sharedWithMeTable').DataTable().page.len(20).draw();">20 Rows</a></li>
+										<li><a onclick="$('#sharedWithMeTable').DataTable().page.len(50).draw();">50 Rows</a></li>
+										<li><a onclick="$('#sharedWithMeTable').DataTable().page.len(100).draw();">100 Rows</a></li>
+									</ul>
+									</div>
+								</div>
+							</h3>
+						</div>
+						<div id="sharedWithMe" class="panel-collapse collapse in">
+							<div class="panel-body">
+								<div class="table-responsive">
+								<table id="sharedWithMeTable" datatable="ng"  dt-options="dtOptions" dt-column-defs="dtColumnDefs" class="display" cellspacing="0" width="100%">
+									<thead>
+										<tr>
+											<th class="previewImgHeader"></th>
+											<th>Filename</th>
+											<th>Game</th>
+											<th>Project</th>
+											<th>Created</th>
+											<th>Modified</th>
+											<th>People</th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr data-ng-repeat="doc in sharedDocs">
+											<td class="previewImg"><div><img ng-src="{{::doc.thumbnailLink}}"><span ng-show="doc.realThumbnail"><img ng-src="{{::doc.thumbnailLink}}"></span></div></td>
+											<td>{{::doc.title}}</td>
+											<td><div class="game-label label-{{doc.game | lowercase}}">{{::doc.game}}</div></td>
+											<td>{{::doc.project}}</td>
+											<td>{{::doc.createdDate | date:'M/d' }} {{::doc.createdDate | date:'H:mm' }}</td>
+											<td>{{::doc.modifiedDate | date:'M/d' }} {{::doc.modifiedDate | date:'H:mm' }}</td>
+											<td>
+												<div class="shareList">
+													<!--<div class="table-label" ng-class="{ 'label label-default': user.emailAddress==doc.owners[0].emailAddress }" ng-repeat="user in doc.sharedUsers">{{user.emailAddress}}</div>-->
+													<div class="table-label">{{::doc.owners[0].emailAddress}} <span class="label label-default" ng-show="doc.sharedUsers.length" tooltip-html-unsafe="{{::doc.sharedUsersHtml}}" tooltip-placement="right">+{{::doc.sharedUsersCount}}</span></div>
+												</div>
+											</td>
+											<td><!--actions-->
+											<div class="btn-group" role="group">
+												<button type="button" class="btn btn-xs btn-default tt infoBtn" tooltip="File Info" ng-click="infoButton(doc)">
+													<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+												</button>
+												<a ng-href="{{doc.webContentLink}}" type="button" class="btn btn-xs btn-default tt infoBtn" tooltip="Download File">
+													<span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+												</a>
+												<button type="button" class="btn btn-xs btn-default shareBtn tt" tooltip="Share" ng-click="shareButton(doc)">
+													<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+												</button>
+												<button type="button" class="btn btn-xs btn-danger tt" tooltip="Delete Image" ng-click="deleteButtonShared(doc)">
+													<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+												</button>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<!--FOOTER-->
+<footer class="footer">
+	<div class="container">
+		<p class="text-muted">&copy; 2015 KIXEYE. All rights reserved.</p>
+	</div>
+</footer>
+<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="js/dataTables.bootstrap.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-switch.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
+<!--angular-->
+<script type="text/javascript" src="js/util.js"></script>
+<script type="text/javascript" src="js/dnd.js"></script>
+<script type="text/javascript" src="js/upload.js"></script>
+<script type="text/javascript" src="js/gdocs.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/ui-bootstrap.min.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/angular-datatables.min.js"></script>
+<script src="https://apis.google.com/js/client:platform.js?onload=render" async defer>
+  function render() {
+    console.log('loaded');
+    $scope.toggleAuth(true);
+  }
+</script>
+<!--/angular-->
+</body>
+</html>

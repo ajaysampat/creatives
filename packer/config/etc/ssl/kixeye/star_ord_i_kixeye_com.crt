@@ -1,0 +1,89 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 6 (0x6)
+    Signature Algorithm: sha1WithRSAEncryption
+        Issuer: C=US, ST=California, L=San Francisco, O=Casual Collective Inc. dba Kixeye, CN=Kixeye Root CA/emailAddress=sysadmin@kixeye.com
+        Validity
+            Not Before: Jan 18 22:12:17 2013 GMT
+            Not After : Jan 16 22:12:17 2023 GMT
+        Subject: C=US, ST=California, O=Casual Collective Inc. dba Kixeye, CN=*.ord.i.kixeye.com
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:a9:ee:2e:65:82:a6:0c:12:71:de:20:df:36:a4:
+                    96:fd:f2:e7:0c:04:8e:62:47:c1:c6:ca:e7:4d:a9:
+                    ed:0a:af:e5:9f:68:54:0b:75:5d:f1:1a:52:8a:c9:
+                    a8:12:34:cc:82:1f:cd:a2:4a:ce:87:62:76:c1:34:
+                    04:ff:9c:8c:04:b2:b6:91:b8:65:fe:6a:63:fc:c1:
+                    db:d0:6e:dc:30:41:b6:c2:b2:22:62:2e:47:0a:38:
+                    82:a7:87:e2:dc:a9:cc:db:17:cb:63:83:de:0c:01:
+                    db:68:6a:03:de:71:01:72:b4:4a:8d:75:95:54:43:
+                    fc:22:77:e0:e2:bc:ce:b9:8c:69:d8:44:8a:45:f8:
+                    2a:51:c5:af:fb:3a:d9:b2:ac:a2:c7:33:01:78:b2:
+                    7c:32:e0:e6:2c:4a:5f:2d:0c:c4:0c:80:70:18:3c:
+                    36:af:54:27:5e:6e:f5:dc:4f:ad:9a:30:97:45:6f:
+                    c6:01:83:a7:17:d7:50:32:5c:6f:48:cb:1e:8f:2e:
+                    e1:87:86:b6:ac:7d:59:2d:13:01:6a:fd:7a:50:77:
+                    af:68:ea:6a:35:fb:22:f2:59:3d:af:70:5f:72:25:
+                    25:bd:65:ec:54:d2:dd:99:13:d1:91:70:81:20:30:
+                    7a:2d:5f:37:85:17:09:80:c4:65:0e:db:66:67:0a:
+                    a4:d3
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            X509v3 Subject Key Identifier: 
+                6B:93:47:93:1E:9E:7D:F0:53:0B:FB:35:DA:03:54:3A:77:49:AD:BD
+            X509v3 Authority Key Identifier: 
+                keyid:90:8D:C4:24:F4:9C:72:B0:8C:86:9B:85:A5:A5:55:5B:93:09:14:6E
+                DirName:/C=US/ST=California/L=San Francisco/O=Casual Collective Inc. dba Kixeye/CN=Kixeye Root CA/emailAddress=sysadmin@kixeye.com
+                serial:DE:83:5C:63:EA:15:E9:F7
+
+            Netscape CA Revocation Url: 
+                https://kixeye.com/ssl/revoke.pem
+    Signature Algorithm: sha1WithRSAEncryption
+         a9:21:b4:b9:7f:ac:68:ce:fa:07:01:bc:2d:9b:ec:e1:d1:b9:
+         8e:bb:c4:3b:b8:24:b8:4c:97:9e:dc:68:36:5a:35:9e:3b:9d:
+         cb:7e:2e:9e:c8:fa:57:a2:14:99:cd:f3:f8:95:54:e8:06:60:
+         14:de:46:5d:57:0d:06:86:44:a3:37:76:c2:c4:e2:67:5a:f9:
+         34:bb:95:b8:44:f4:09:7e:da:df:75:99:1c:5a:89:5c:40:f3:
+         d0:b8:34:40:00:b2:d5:87:05:b3:23:1f:9a:0e:fa:e9:11:7c:
+         07:0e:eb:49:59:93:2c:f2:da:3a:fd:6e:b2:06:b8:14:4e:f9:
+         08:d3:8d:0f:37:43:8a:0a:ef:5d:20:01:c8:cb:a5:4f:cd:a0:
+         f3:19:c1:c0:4b:d0:3d:0b:95:3e:85:ed:53:61:94:f9:4e:c5:
+         9c:5c:22:8c:01:64:25:87:28:5b:05:1b:9b:a5:cf:2f:2e:4d:
+         4d:6b:71:84:4f:e5:b0:fd:b7:1b:21:73:68:47:bd:40:84:9f:
+         e0:a2:48:32:c9:69:89:1f:62:8d:a8:de:2d:f4:09:13:e1:37:
+         46:76:35:f0:82:bd:52:bf:2e:8c:4d:81:7f:17:00:07:0a:32:
+         59:f1:c6:11:26:9b:11:1b:ca:40:b0:b3:fb:58:dd:99:49:52:
+         de:50:45:ad
+-----BEGIN CERTIFICATE-----
+MIIExzCCA6+gAwIBAgIBBjANBgkqhkiG9w0BAQUFADCBozELMAkGA1UEBhMCVVMx
+EzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xKjAo
+BgNVBAoMIUNhc3VhbCBDb2xsZWN0aXZlIEluYy4gZGJhIEtpeGV5ZTEXMBUGA1UE
+AwwOS2l4ZXllIFJvb3QgQ0ExIjAgBgkqhkiG9w0BCQEWE3N5c2FkbWluQGtpeGV5
+ZS5jb20wHhcNMTMwMTE4MjIxMjE3WhcNMjMwMTE2MjIxMjE3WjBrMQswCQYDVQQG
+EwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEqMCgGA1UECgwhQ2FzdWFsIENvbGxl
+Y3RpdmUgSW5jLiBkYmEgS2l4ZXllMRswGQYDVQQDDBIqLm9yZC5pLmtpeGV5ZS5j
+b20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCp7i5lgqYMEnHeIN82
+pJb98ucMBI5iR8HGyudNqe0Kr+WfaFQLdV3xGlKKyagSNMyCH82iSs6HYnbBNAT/
+nIwEsraRuGX+amP8wdvQbtwwQbbCsiJiLkcKOIKnh+LcqczbF8tjg94MAdtoagPe
+cQFytEqNdZVUQ/wid+DivM65jGnYRIpF+CpRxa/7OtmyrKLHMwF4snwy4OYsSl8t
+DMQMgHAYPDavVCdebvXcT62aMJdFb8YBg6cX11AyXG9Iyx6PLuGHhrasfVktEwFq
+/XpQd69o6mo1+yLyWT2vcF9yJSW9ZexU0t2ZE9GRcIEgMHotXzeFFwmAxGUO22Zn
+CqTTAgMBAAGjggE7MIIBNzAJBgNVHRMEAjAAMB0GA1UdDgQWBBRrk0eTHp598FML
++zXaA1Q6d0mtvTCB2AYDVR0jBIHQMIHNgBSQjcQk9JxysIyGm4WlpVVbkwkUbqGB
+qaSBpjCBozELMAkGA1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNV
+BAcMDVNhbiBGcmFuY2lzY28xKjAoBgNVBAoMIUNhc3VhbCBDb2xsZWN0aXZlIElu
+Yy4gZGJhIEtpeGV5ZTEXMBUGA1UEAwwOS2l4ZXllIFJvb3QgQ0ExIjAgBgkqhkiG
+9w0BCQEWE3N5c2FkbWluQGtpeGV5ZS5jb22CCQDeg1xj6hXp9zAwBglghkgBhvhC
+AQQEIxYhaHR0cHM6Ly9raXhleWUuY29tL3NzbC9yZXZva2UucGVtMA0GCSqGSIb3
+DQEBBQUAA4IBAQCpIbS5f6xozvoHAbwtm+zh0bmOu8Q7uCS4TJee3Gg2WjWeO53L
+fi6eyPpXohSZzfP4lVToBmAU3kZdVw0GhkSjN3bCxOJnWvk0u5W4RPQJftrfdZkc
+WolcQPPQuDRAALLVhwWzIx+aDvrpEXwHDutJWZMs8to6/W6yBrgUTvkI040PN0OK
+Cu9dIAHIy6VPzaDzGcHAS9A9C5U+he1TYZT5TsWcXCKMAWQlhyhbBRubpc8vLk1N
+a3GET+Ww/bcbIXNoR71AhJ/gokgyyWmJH2KNqN4t9AkT4TdGdjXwgr1Svy6MTYF/
+FwAHCjJZ8cYRJpsRG8pAsLP7WN2ZSVLeUEWt
+-----END CERTIFICATE-----

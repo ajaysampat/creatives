@@ -1,0 +1,359 @@
+html {
+	position: relative;
+	min-height: 100%;
+}
+body {
+	padding-top: 70px;
+	margin-bottom: 20px;
+	background: #eeeeee;
+	font-size: 12px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 20px;
+  text-align: center;
+  font-size: 10px;
+  background-color: #eeeeee;
+}
+.navbar-text.navbar-right {
+	margin-top: 8px;
+	margin-bottom: 8px;
+	margin-right: 40px !important;
+}
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: black;
+	opacity: 0.8;
+	z-index: 1040;
+	display: none;
+}
+.overlay div {
+	position: absolute;
+	top: 50%;
+	width: 100%;
+	margin-top: -0.5em;
+	color: white;
+	font-weight: bold;
+	font-size: 100px;
+	text-align: center;
+}
+.hidden {
+	display: none;
+}
+table.dataTable thead th, table.dataTable thead td, table.dataTable.no-footer {
+	border-bottom: 1px solid #ccc;
+}
+#myFilesSearch, #sharedWithMeSearch {
+	display: inline-block;
+	width: 200px;
+}
+#myFilesSearch input, #sharedWithMeSearch input {
+	margin-top: -3px;
+}
+.myFilesNavbar, .sharedWithMeNavbar {
+	margin-top: -6px;
+}
+#myFilesFilters *:focus {
+	outline: 0;
+}
+#myFilesFilters .btn-default:focus {
+	background: white;
+}
+.btn.disabled {
+	opacity: 0.4;
+}
+.previewImg {
+	position: relative;
+	padding:0px;
+	text-align:center;
+}
+.previewImgHeader {
+	padding: 2px !important;
+}
+.previewImg img {
+	max-width: 25px;
+	max-height: 25px;
+	cursor: pointer;
+}
+.previewImg span img {
+	max-width: 500px;
+	max-height: 500px;
+}
+.previewImg span {
+	position: absolute;
+	left: -9999px;
+	top: -9999px;
+	padding: 6px;
+	background: white;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+	box-shadow: 0 0 20px rgba(0,0,0, .75);
+}
+.previewImg:hover span {
+	top: -200px;
+	left: 100px;
+}
+.addTagBtn {
+	height: 17px;
+	width: 17px;
+	line-height: inherit;
+	padding: 0px;
+}
+.game-label {
+	font-weight: bold;
+	background: url("../images/cus-icons.png") no-repeat;
+	background-size: auto 16px;
+	padding-left: 18px;
+	width: 16px;
+	word-wrap: normal;
+}
+.dataTable .game-label {
+	margin: 0 0 0 3px;
+}
+.dataTable tr {
+	height: 35px;
+}
+.datatable tbody td {
+	padding: 3px 10px;
+}
+table.dataTable tbody th, table.dataTable tbody td {
+  padding: 0px 10px;
+}
+.dataTable {
+	table-layout: fixed;
+	word-wrap: break-word;
+}
+.previewImg {
+	z-index: 2;
+	text-align:center;
+}
+.previewImg div {
+	display:inline-block;
+	margin-right: 5px;
+}
+.label-bp {	background-position: -21px 0; }
+.label-wc {	background-position: -168px 0; }
+.label-vc {	background-position: -147px 0; }
+.label-ra {	background-position: -189px 0; }
+.label-sf {	background-position: -127px 0; }
+.label-km {	background-position: -127px 0; }
+.center {text-align: center;}
+#authorize-button {
+	margin-right: 15px;
+}
+ul.nav li {
+	display: inline-block;
+}
+ul.nav li a:hover, ul.nav li a:focus {
+	background: none;
+}
+.emailButton a {
+	padding: 0px !important;
+	color: white;
+}
+.emailButton a span {
+}
+.ng-hide {
+	display: none !important;
+}
+.carousel-control {
+	background: none !important;
+}
+.carousel-indicators {
+	display: none;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+	padding: 0px;
+	margin: 0px;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+	background: none;
+	border: 1px solid white;
+}
+.navbar-brand {
+	min-height: 38px;
+	height: 38px;
+	padding: 8px 0 8px 40px;
+}
+.navbar-brand span {
+	color: white;
+}
+.navbar {
+	min-height: 38px;
+	background: black;
+}
+.emailButton .glyphicon {
+	top: 3px;
+}
+#sharedWithMeFilters button, #myFilesFilters button {
+	width: 55px;
+}
+#sharedWithMeFilters button:nth-of-type(4), #myFilesFilters button:nth-of-type(4){
+	width: 70px;
+}
+.uploadGameButtons button {
+	width: 65px;
+}
+.uploadGameButtons button:nth-of-type(4) {
+	width: 80px;
+}
+#my_file {
+	display: none;
+}
+.table-label {
+	display: inline-block;
+	font-size: 10px;
+	font-weight: 700;
+}
+.table-label .label {
+	font-weight:normal;
+	font-size:10px;
+}
+.tut_icon {
+  background: white;
+  height: 46px;
+  width: 46px;
+  display: inline-block;
+  border-radius: 23px;
+  font-size: 32px;
+  padding-top: 4px;
+  text-align: center;
+}
+.tut_text {
+	font-weight: bold;
+	text-align: center;
+	font-size: 10px;
+}
+.tut_box {
+	display: inline-block;
+	margin: 0px 2px;
+}
+.alert-tutorial {
+	text-align: left;
+	height: 85px;
+}
+.tut_header {
+	font-size: 24px;
+	position:relative;
+	top: -10px;
+}
+.tut_subheader {
+	position: relative;
+	top: -10px;
+}
+.tut_icons_box, .tut_header_box {
+	display:inline-block;
+}
+.tut_header_box {
+	margin-left: 20px;
+}
+.tab-content .tablesorter-filter, .tab-content .summary-tiny-icon, .tab-content .tablesorter-filter-row {
+	display: none;
+}
+.tab-content table img, .tab-content table video {
+	max-width: 200px;
+}
+.tab-pane {
+	height: 250px;
+	overflow: scroll;
+}
+.tab-pane::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+.tab-pane::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0,0,0,.5);
+    box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+.panel-group .panel {
+  margin-bottom: 20px;
+}
+.upload-form {
+	margin-bottom: 10px;
+}
+.shareList{
+	max-height: 32px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+.glyphicon-ok-sign {
+	color: green;
+}
+.spinner {
+  display: inline-block;
+  opacity: 0;
+  width: 0;
+
+  -webkit-transition: opacity 0.25s, width 0.25s;
+  -moz-transition: opacity 0.25s, width 0.25s;
+  -o-transition: opacity 0.25s, width 0.25s;
+  transition: opacity 0.25s, width 0.25s;
+}
+
+.has-spinner.active {
+  cursor:progress;
+}
+
+.has-spinner.active .spinner {
+  opacity: 1;
+  width: auto; /* This doesn't work, just fix for unkown width elements */
+}
+
+.has-spinner.btn-mini.active .spinner {
+    width: 10px;
+}
+
+.has-spinner.btn-small.active .spinner {
+    width: 13px;
+}
+
+.has-spinner.btn.active .spinner {
+    width: 16px;
+}
+
+.has-spinner.btn-large.active .spinner {
+    width: 19px;
+}
+.tooltip.right .tooltip-inner {
+	text-align: left;
+	max-width:230px;
+}
+.table-responsive {
+	overflow-x: visible;
+}
+.dt-right {
+	text-align: right;
+}
+form.daterange span.input-group-addon {
+	padding: 0 5px;
+}
+form.daterange label {
+	font-size: 12px;
+}
+#filterRow form {
+	display: inline;
+}
+#filterRow {
+	width:900px;
+	margin: 0 auto 20px;
+}
+#filterRow h4 {
+	display: inline;
+	position: relative;
+	top: 3px;
+	padding: 0 25px;
+}
+#fileSearch input {
+	width: 250px;
+}
+#filterRow button[type="submit"] {
+	padding: 5px 7px;
+	font-size: 13px;
+}
